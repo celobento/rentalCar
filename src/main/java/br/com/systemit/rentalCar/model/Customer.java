@@ -1,4 +1,4 @@
-package br.com.systemit.rentalCar.entity;
+package br.com.systemit.rentalCar.model;
 
 public class Customer {
 

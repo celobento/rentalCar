@@ -1,13 +1,17 @@
-package br.com.systemit.rentalCar.entity;
+package br.com.systemit.rentalCar.model;
 
 public class Car {
 
+    private String name;
     private String model;
     private double dailyRate;
+    private int year;
 
-    public Car(String model, double dailyRate) {
+    public Car(String name, String model, double dailyRate, int year) {
+        this.name = name;
         this.model = model;
         this.dailyRate = dailyRate;
+        this.year = year;
     }
 
     public double calculateDailyRentalRate(int days) {
@@ -18,6 +22,10 @@ public class Car {
         return (dailyRate * days) - discount;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getModel() {
         return model;
     }
@@ -26,11 +34,23 @@ public class Car {
         return dailyRate;
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setModel(String model) {
         this.model = model;
     }
 
     public void setDailyRate(double dailyRate) {
         this.dailyRate = dailyRate;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }
