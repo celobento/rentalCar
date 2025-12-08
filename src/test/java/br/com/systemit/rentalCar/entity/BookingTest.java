@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -53,5 +54,13 @@ public class BookingTest {
                 () -> {
                     new Booking(customer, car, days).calculateTotalAmount();
                 });
+    }
+
+    @Test
+    public void shouldThrowExceptionWithNegativeDays() {
+        var erro = Assertions.catchThrowable(() -> new Booking(customer, car, 0));
+        Assertions.assertThat(erro)
+                .isInstanceOf(BookingInvalidException.class)
+                .hasMessage("The number of days must be greater than 0");
     }
 }
